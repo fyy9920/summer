@@ -3,6 +3,7 @@ package com.summer.api;
 import com.summer.common.PageResult;
 import com.summer.common.Response;
 import com.summer.entity.OrderAddress;
+import com.summer.entity.request.OrderAddressListReq;
 import com.summer.entity.request.OrderAddressReq;
 import com.summer.entity.request.OrderPageReq;
 import com.summer.service.OrderAddressService;
@@ -28,20 +29,20 @@ public class OrderAddressController {
 
     @ApiOperation(value = "收货地址列表",response = Response.class)
     @PostMapping("/list")
-    public Response list(@RequestBody @Valid OrderAddressReq  orderAddressReqReq) throws IllegalAccessException {
-        return Response.rspData(orderAddressService.orderAddressPageList(orderAddressReqReq));
+    public Response list(@RequestBody @Valid OrderAddressListReq orderAddressListReq) throws IllegalAccessException {
+        return Response.rspData(orderAddressService.orderAddressPageList(orderAddressListReq));
     }
 
 
     @ApiOperation(value = "新增收货地址",response = Response.class)
     @PostMapping("/save")
-    public Response save(@RequestBody OrderAddressReq orderAddressReqReq) throws IllegalAccessException {
+    public Response save(@RequestBody @Valid OrderAddressReq orderAddressReqReq) throws IllegalAccessException {
         return Response.rspData(orderAddressService.saveOrderAddress(orderAddressReqReq));
     }
 
     @ApiOperation(value = "修改收货地址",response = Response.class)
     @PostMapping("/update")
-    public Response update(@RequestBody OrderAddressReq orderAddressReqReq) throws IllegalAccessException {
+    public Response update(@RequestBody @Valid OrderAddressReq orderAddressReqReq)  {
         return Response.rspData(orderAddressService.updateOrderAddress(orderAddressReqReq));
     }
 

@@ -5,12 +5,12 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.summer.entity.OrderAddress;
 import com.summer.entity.WechatUser;
 import com.summer.entity.dto.OrderAddressDto;
+import com.summer.entity.request.OrderAddressListReq;
 import com.summer.entity.request.OrderAddressReq;
 import com.summer.exception.ServiceException;
 import com.summer.mapper.OrderAddressMapper;
 import com.summer.service.IWechatUserService;
 import com.summer.service.OrderAddressService;
-import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
@@ -31,9 +31,9 @@ public class OrderAddressServiceImpl extends ServiceImpl<OrderAddressMapper, Ord
     private IWechatUserService wechatUserService;
 
     @Override
-    public List<OrderAddressDto> orderAddressPageList(OrderAddressReq orderAddressReq) {
+    public List<OrderAddressDto> orderAddressPageList(OrderAddressListReq orderAddressListReq) {
 
-        List<OrderAddress> orderAddressList= list(new LambdaQueryWrapper<OrderAddress>().eq(OrderAddress::getUserId, orderAddressReq.getUserId()));
+        List<OrderAddress> orderAddressList= list(new LambdaQueryWrapper<OrderAddress>().eq(OrderAddress::getUserId, orderAddressListReq.getUserId()));
         List<OrderAddressDto> list = new ArrayList<>();
         orderAddressList.forEach(orderAddress -> {
             OrderAddressDto orderAddressDto = new OrderAddressDto();
@@ -51,9 +51,6 @@ public class OrderAddressServiceImpl extends ServiceImpl<OrderAddressMapper, Ord
 
     @Override
     public boolean saveOrderAddress(OrderAddressReq orderAddressReqReq) {
-        if(StringUtils.isBlank(orderAddressReqReq.getAddress())){
-            throw new ServiceException("收货地址不能为空!");
-        }
         OrderAddress orderAddress = new OrderAddress();
         BeanUtils.copyProperties(orderAddressReqReq,orderAddress);
         orderAddress.setCreateBy(1);
