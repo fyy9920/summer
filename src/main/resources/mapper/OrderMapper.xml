@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.summer.mapper.OrderMapper">
+
+    <resultMap id="BaseResultMap" type="com.summer.entity.Order">
+            <id property="id" column="id" jdbcType="INTEGER"/>
+            <result property="activityId" column="activity_id" jdbcType="INTEGER"/>
+            <result property="userid" column="userId" jdbcType="INTEGER"/>
+            <result property="camperid" column="camperId" jdbcType="VARCHAR"/>
+            <result property="species" column="species" jdbcType="VARCHAR"/>
+            <result property="entrytime" column="entryTime" jdbcType="VARCHAR"/>
+            <result property="prize" column="prize" jdbcType="INTEGER"/>
+            <result property="status" column="status" jdbcType="TINYINT"/>
+            <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+            <result property="createBy" column="create_by" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,activity_id,userId,
+        camperId,species,entryTime,
+        prize,status,create_time,
+        create_by
+    </sql>
+</mapper>

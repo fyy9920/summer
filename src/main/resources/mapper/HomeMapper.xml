@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.summer.mapper.HomeMapper">
+
+    <resultMap id="BaseResultMap" type="com.summer.entity.Home">
+            <id property="id" column="id" jdbcType="INTEGER"/>
+            <result property="title" column="title" jdbcType="VARCHAR"/>
+            <result property="bannerUrl" column="banner_url" jdbcType="VARCHAR"/>
+            <result property="detailUrl" column="detail_url" jdbcType="VARCHAR"/>
+            <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+            <result property="createId" column="create_id" jdbcType="INTEGER"/>
+            <result property="deleteMark" column="delete_mark" jdbcType="TINYINT"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,title,banner_url,
+        detail_url,create_time,create_id,
+        delete_mark
+    </sql>
+</mapper>
